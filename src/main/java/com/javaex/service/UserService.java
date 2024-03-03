@@ -8,14 +8,24 @@ import com.javaex.vo.UserVo;
 
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserDao userDao;
-	
-	//로그인
-	public void exeLogin(UserVo userVo) {
+
+	// 로그인
+	public UserVo exeLogin(UserVo userVo) {
 		System.out.println("UserService.exeLogin()");
+
+		UserVo authUser = (UserVo) userDao.userSelectByIdPw(userVo);
+
+		return authUser;
+	}
+
+	public int exeJoin(UserVo userVo) {
+		System.out.println("UserService.exeJoin()");
 		
-		userDao.userSelectByIdPw(userVo);
+		int count = userDao.userJoin(userVo);
+
+		return count;
 	}
 }
