@@ -15,13 +15,13 @@ public class GuestService {
 	private GuestDao guestDao;
 
 	public List<GuestVo> exeList() {
-		System.out.println("GuestVo.exeList()");
+		System.out.println("GuestService.exeList()");
 
 		return guestDao.list();
 	}
 
 	public int exeWrite(GuestVo guestVo) {
-		System.out.println("GuestVo.exeWrite()");
+		System.out.println("GuestService.exeWrite()");
 
 		int count = guestDao.write(guestVo);
 
@@ -29,7 +29,7 @@ public class GuestService {
 	}
 
 	public int exeDelete(GuestVo guestVo) {
-		System.out.println("GuestVo.exeDelete()");
+		System.out.println("GuestService.exeDelete()");
 
 		int count = guestDao.delete(guestVo);
 

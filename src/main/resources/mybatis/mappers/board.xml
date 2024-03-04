@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+	<resultMap type="com.javaex.vo.BoardVo" id="resultMapBoardVo">
+		<result column="no" property="no"></result>
+		<result column="title" property="title"></result>
+		<result column="content" property="content"></result>
+		<result column="hit" property="hit"></result>
+		<result column="reg_date" property="regDate"></result>
+		<result column="user_no" property="userNo"></result>
+	</resultMap>
+
+	<select id="list" resultMap="resultMapBoardVo">
+		<![CDATA[	
+			select b.no, b.title, u.name, b.hit, b.reg_date
+			from board b, users u
+			where b.user_no=u.no;
+		]]>
+	</select>
+
+</mapper>
