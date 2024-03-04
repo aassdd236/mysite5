@@ -29,8 +29,8 @@
 				<c:if test="${ !(empty sessionScope.authUser) }">
 					<!-- 로그인 후 -->
 					<li>${authUser.name} 님 안녕하세용 ~</li>
-					<li><a href="">로그아웃</a></li>
-					<li><a href="">회원정보수정</a></li>
+					<li><a href="/mysite5/user/logout">로그아웃</a></li>
+					<li><a href="/mysite5/user/modifyForm">회원정보수정</a></li>
 
 				</c:if>
 			</ul>
