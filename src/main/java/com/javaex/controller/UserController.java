@@ -28,13 +28,13 @@ public class UserController {
 	
 	// 로그인
 	@RequestMapping(value = "/user/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(@ModelAttribute UserVo userVo, HttpServletRequest request, HttpSession session) {
+	public String login(@ModelAttribute UserVo userVo, HttpSession session, HttpServletRequest request) {
 		System.out.println("UserController.login()");
 		//System.out.println(userVo);
 
 		UserVo authUser = userService.exeLogin(userVo);
 
-		System.out.println(authUser);
+		//System.out.println(authUser);
 		if (authUser != null) {
 			session = request.getSession();
 			session.setAttribute("authUser", authUser);

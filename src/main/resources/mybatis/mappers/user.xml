@@ -11,7 +11,7 @@
 		<result column="gender" property="gender"></result>
 	</resultMap>
 
-	<select id="select" parameterType="UserVo" resultMap="resultMapUserVo">
+	<select id="selectByIdPw" parameterType="UserVo" resultMap="resultMapUserVo">
 		<![CDATA[	
 			select no, name, id, password, gender
 			from users
