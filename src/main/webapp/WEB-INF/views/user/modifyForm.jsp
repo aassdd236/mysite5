@@ -13,39 +13,7 @@
 <body>
 	<div id="wrap">
 
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="">MySite-${pageContext.request.contextPath}</a>
-			</h1>
-
-			<ul>
-				<c:if test="${empty sessionScope.authUser}">
-					<!-- 로그인 전 -->
-					<li><a href="/mysite5/user/loginform">로그인</a></li>
-					<li><a href="/mysite5/user/joinform">회원가입</a></li>
-				</c:if>
-
-				<c:if test="${ !(empty sessionScope.authUser) }">
-					<!-- 로그인 후 -->
-					<li>${authUser.name} 님 안녕하세용 ~</li>
-					<li><a href="/mysite5/user/logout">로그아웃</a></li>
-					<li><a href="/mysite5/user/modifyForm">회원정보수정</a></li>
-
-				</c:if>
-			</ul>
-			
-		</div>
-		<!-- //header -->
-
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
+		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -75,24 +43,26 @@
 	
 				<div id="user">
 					<div id="modifyForm">
-						<form action="" method="">
+						<form action="${pageContext.request.contextPath}/user/modify" method="get">
 	
+							<input type="hidden" name="no" value="${authUser.no}">
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<span class="text-large bold">${id}</span>
+								<span class="text-large bold">${authUser.id}</span>
+								<input type="hidden" name="id" value="${authUser.id}">
 							</div>
 	
 							<!-- 비밀번호 -->
 							<div class="form-group">
 								<label class="form-text" for="input-pass">패스워드</label> 
-								<input type="text" id="input-pass" name="password" value="" placeholder="비밀번호를 입력하세요"	>
+								<input type="text" id="input-pass" name="password" value="${authUser.password}">
 							</div>
 	
 							<!-- 이메일 -->
 							<div class="form-group">
 								<label class="form-text" for="input-name">이름</label> 
-								<input type="text" id="input-name" name="name" value="" placeholder="이름을 입력하세요">
+								<input type="text" id="input-name" name="name" value="${authUser.name}">
 							</div>
 	
 							<!-- //나이 -->
@@ -125,10 +95,9 @@
 		</div>
 		<!-- //container  -->
 
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
-		<!-- //footer -->
+		<!-- footer.jsp 불러오는 코드 -->
+		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+
 		
 	</div>
 	<!-- //wrap -->

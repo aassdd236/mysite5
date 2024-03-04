@@ -28,4 +28,13 @@ public class UserService {
 
 		return count;
 	}
+
+	public int exeUpdate(UserVo userVo) {
+		System.out.println("UserService.exeUpdate()");
+		
+		int count = userDao.userUpdate(userVo);
+
+		return count;
+	}
+
 }

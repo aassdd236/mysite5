@@ -80,4 +80,15 @@ public class UserController {
 
 		return "user/modifyForm";
 	}
+
+	// 회원정보수정
+	@RequestMapping(value = "/user/modify", method = { RequestMethod.GET, RequestMethod.POST })
+	public String modify(@ModelAttribute UserVo userVo) {
+		System.out.println("UserController.modify()");
+
+		userService.exeUpdate(userVo);
+		System.out.println(userVo);
+		
+		return "redirect:/main";
+	}
 }
